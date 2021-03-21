@@ -40,5 +40,7 @@
                 </div>
             </div>
         </div>
+        <a href="roles.aspx"><< Back to manage</a><br>
+        <br>
     </div>
 </asp:Content>

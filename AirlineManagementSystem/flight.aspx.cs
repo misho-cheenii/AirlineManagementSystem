@@ -189,7 +189,7 @@ namespace AirlineManagementSystem
 
                 cmd.ExecuteNonQuery();
                 con.Close();
-                Response.Write("<script>alert('Update Successful');</script>");
+                Response.Write("<script>alert('New Flight added Successful');</script>");
                 clearForm();
             }
             catch (Exception ex)
