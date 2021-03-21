@@ -1,0 +1,23 @@
+﻿.gridviewstyle {
+    width: 100%;
+    border: solid 1px black;
+    min-width: 80%;
+}
+
+.header {
+    background-color: #646464;
+    font-family: Arial;
+    color: White;
+    height: 25px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.gridviewstyle td {
+    padding: 3px;
+    text-align: center;
+}
+
+.gridviewstyle th {
+    padding: 3px;
+}
