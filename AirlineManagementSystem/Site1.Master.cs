@@ -19,10 +19,9 @@ namespace AirlineManagementSystem
                     LinkButton2.Visible = true; // sign up link button
 
                     LinkButton3.Visible = false; // logout link button
-
+                    
                     LinkButton4.Visible = true; // admin login link button
                     LinkButton5.Visible = true; // staff login link button
-
                 }
                 else if (Session["role"].Equals("Passenger"))
                 {
@@ -96,5 +95,6 @@ namespace AirlineManagementSystem
 
             Response.Redirect("homepage.aspx");
         }
+
     }
 }

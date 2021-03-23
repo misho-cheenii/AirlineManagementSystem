@@ -31,7 +31,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AirlineManagement_V2ConnectionString %>" SelectCommand="SELECT [id], [phone_no], [f_Name], [l_Name], [address], [email], [username] FROM [passenger]"></asp:SqlDataSource>
+                            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AirlineManagement_V2ConnectionString %>" SelectCommand="SELECT [f_Name] as Fisrt_Name, [l_Name] as Last_Name,[phone_no],  [address], [email], [username], f_id as Flight_No, B.id as Booking_No FROM passenger as P join booking as B on B.p_id = P.id"></asp:SqlDataSource>
                             <div class="col">
                                 <asp:GridView ID="GridView1" class="table table-striped table-bordered" runat="server" DataSourceID="SqlDataSource1"></asp:GridView>
                             </div>
