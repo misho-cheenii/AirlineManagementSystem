@@ -34,7 +34,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AirlineManagement_V2ConnectionString %>" SelectCommand="SELECT * FROM [flightView]"></asp:SqlDataSource>
+                            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AirlineManagement_V2ConnectionString %>" SelectCommand="SELECT * FROM [flightView] where Departure >= DATEADD(hour,5,CURRENT_TIMESTAMP)"></asp:SqlDataSource>
                             <div class="col">
                                 <asp:GridView class="table table-striped table-bordered" ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="Flight" DataSourceID="SqlDataSource1">
                                     <Columns>
