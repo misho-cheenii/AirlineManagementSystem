@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="staff.aspx.cs" Inherits="AirlineManagementSystem.staff" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script type="text/javascript">
         $(document).ready(function () {
@@ -13,15 +14,17 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
     <div class="container-fluid">
+        <br>
         <div class="row">
-            <div class="col-md-4"><br>
+            <div class="col-md-4">
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
                                 <center>
-                                    <h4>Staff Management</h4>
+                                    <h3>Staff Management</h3>
                                 </center>
                             </div>
                         </div>
@@ -115,7 +118,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-8 mx-auto"><br>
+            <div class="col-md-8 mx-auto">
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
@@ -174,7 +177,6 @@
                 </div>
             </div>
         </div>
-        <a href="roles.aspx"><< Back to manage</a><br>
         <br>
     </div>
 </asp:Content>

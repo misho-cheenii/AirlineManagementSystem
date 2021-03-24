@@ -22,6 +22,8 @@ namespace AirlineManagementSystem
                     
                     LinkButton4.Visible = true; // admin login link button
                     LinkButton5.Visible = true; // staff login link button
+                    LinkButton6.Visible = false; // roles link button
+                    LinkButton7.Visible = true; // home link button
                 }
                 else if (Session["role"].Equals("Passenger"))
                 {
@@ -32,6 +34,8 @@ namespace AirlineManagementSystem
 
                     LinkButton4.Visible = false; // admin login link button
                     LinkButton5.Visible = false; // staff login link button
+                    LinkButton6.Visible = false; // roles link button
+                    LinkButton7.Visible = true; // home link button
                 }
                 else if (Session["role"].Equals("Admin"))
                 {
@@ -42,6 +46,8 @@ namespace AirlineManagementSystem
 
                     LinkButton4.Visible = false; // admin login link button
                     LinkButton5.Visible = false; // staff login link button
+                    LinkButton6.Visible = true; // roles link button
+                    LinkButton7.Visible = false; // home link button
                 }
                 else if (Session["role"].Equals("Manager"))
                 {
@@ -52,6 +58,8 @@ namespace AirlineManagementSystem
 
                     LinkButton4.Visible = false; // admin login link button
                     LinkButton5.Visible = false; // staff login link button
+                    LinkButton6.Visible = true; // roles link button
+                    LinkButton7.Visible = false; // home link button
                 }
             }
             catch (Exception ex)
@@ -92,9 +100,22 @@ namespace AirlineManagementSystem
 
             LinkButton4.Visible = true; // admin login link button
             LinkButton5.Visible = true; // staff login link button
+            LinkButton6.Visible = false; // roles link button
+            LinkButton7.Visible = true; // home link button
 
-            Response.Redirect("homepage.aspx");
+            Session.Abandon();
+            Session.Clear();
+            Response.Redirect("userlogin.aspx");
         }
 
+        protected void LinkButton6_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("roles.aspx");
+        }
+
+        protected void LinkButton7_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("homepage.aspx");
+        }
     }
 }

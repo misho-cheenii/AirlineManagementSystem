@@ -32,7 +32,12 @@
                             Airline Management System</a>
                     </div>
                     <ul class="nav navbar-nav mr-auto">
-                        <li class="active"><a href="homepage.aspx" id="home" class="nav-link">Home</a></li>
+                        <li class="nav-item active">
+                            <asp:LinkButton class="nav-link" ID="LinkButton7" runat="server" OnClick="LinkButton7_Click">Home</asp:LinkButton>
+                        </li>
+                        <li class="nav-item active">
+                            <asp:LinkButton class="nav-link" ID="LinkButton6" runat="server" OnClick="LinkButton6_Click">Roles</asp:LinkButton>
+                        </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="nav-item active">
@@ -41,9 +46,8 @@
                         <li class="nav-item active">
                             <asp:LinkButton class="nav-link" ID="LinkButton2" runat="server" OnClick="LinkButton2_Click">Sign Up</asp:LinkButton>
                         </li>
-
                         <li class="nav-item active">
-                            <asp:LinkButton class="nav-link" ID="LinkButton3" runat="server" OnClick="LinkButton3_Click" >Logout</asp:LinkButton>
+                            <asp:LinkButton class="nav-link" ID="LinkButton3" runat="server" OnClick="LinkButton3_Click">Logout</asp:LinkButton>
                         </li>
                     </ul>
                 </div>

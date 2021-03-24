@@ -57,40 +57,70 @@ namespace AirlineManagementSystem
             }
         }
 
-        protected void Button4_Click(object sender, EventArgs e)
-        {
-            if (Session["role"] == null)
-            {
-                Response.Redirect("userlogin.aspx");
-
-            }
-            else
-            {
-                deleteBooking();
-
-            }
-            
-        }
         void deleteBooking()
         {
             try
             {
-                SqlConnection con = new SqlConnection(strcon);
-                if (con.State == ConnectionState.Closed)
+                int flag = 0;
+                using (SqlConnection con = new SqlConnection(strcon))
                 {
-                    con.Open();
+                    if (con.State == ConnectionState.Closed)
+                    {
+                        con.Open();
+                    }
+
+                    SqlCommand cmd = new SqlCommand("select * from booking where id ='" + TextBox1.Text.Trim() + "';", con);
+                    DataTable dt = new DataTable();
+
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+
+                    da.Fill(dt);
+
+                    foreach (DataRow dr in dt.Rows)
+                    {
+
+                        string bs = dr["p_id"].ToString();
+                        string av = Session["userid"].ToString();
+                        if ((bs == av))
+                        {
+                            
+                            flag = 1;
+                        }
+                        else
+                        {
+                            Response.Write("<script>alert('Unauthorized user');</script>");
+                            break;
+                        }
+                    }
+                    con.Close();
+                }
+                if (flag == 1)
+                {
+                    using (SqlConnection con = new SqlConnection(strcon))
+                    {
+                        if (con.State == ConnectionState.Closed)
+                        {
+                            con.Open();
+                        }
+
+                        SqlCommand cmd = new SqlCommand("DELETE FROM [booking] WHERE id ='" + TextBox1.Text.Trim() + "';", con);
+
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                        Response.Write("<script>alert('Booking Delete Successful');</script>");
+                    }
                 }
 
-                SqlCommand cmd = new SqlCommand("DELETE FROM [bookingdetails] WHERE Booking_No ='" + TextBox1.Text.Trim() + "';", con);
-
-                cmd.ExecuteNonQuery();
-                con.Close();
-                Response.Write("<script>alert('Booking Delete Successful');</script>");
             }
             catch (Exception ex)
             {
                 Response.Write("<script>alert('" + ex.Message + "');</script>");
             }
+        }
+
+        protected void Button4_Click(object sender, EventArgs e)
+        {
+            deleteBooking();
         }
     }
 }

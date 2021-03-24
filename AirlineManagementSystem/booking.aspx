@@ -32,7 +32,7 @@
         <div class="row">
             <div class="col-md-2 mx-auto">
                 <asp:Button ID="Button3" class="btn btn-secondary btn-block" runat="server" Text="View Details" OnClick="Button3_Click" />
-                <asp:Button ID="Button4" class="btn btn-danger btn-block " runat="server" Text="Cancel Booking" OnClick="Button4_Click" />
+                <asp:Button ID="Button4" class="btn btn-danger btn-block " runat="server" Text="Cancel Booking" OnClick="Button4_Click"/>
             </div>
         </div>
         <br>
