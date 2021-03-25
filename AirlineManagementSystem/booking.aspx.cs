@@ -28,26 +28,63 @@ namespace AirlineManagementSystem
         {
             try
             {
+                int flag = 0;
                 using (SqlConnection con = new SqlConnection(strcon))
                 {
-
                     if (con.State == ConnectionState.Closed)
                     {
                         con.Open();
                     }
 
-                    SqlCommand cmd = new SqlCommand("SELECT [Flight_No],[Booking_By],[To],[From],[Class],[Departure],[Duration] from bookingdetails where Booking_No='" + TextBox1.Text.Trim() + "';", con);
-                    cmd.CommandType = CommandType.Text;
+                    SqlCommand cmd = new SqlCommand("select * from booking where id ='" + TextBox1.Text.Trim() + "';", con);
+                    DataTable dt = new DataTable();
 
-                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+
+                    da.Fill(dt);
+
+                    foreach (DataRow dr in dt.Rows)
                     {
-                        GridView1.DataSource = dr;
-                        GridView1.DataBind();
-                        dr.Dispose();
-                        dr.Close();
+
+                        string bs = dr["p_id"].ToString();
+                        string av = Session["userid"].ToString();
+                        if ((bs == av))
+                        {
+
+                            flag = 1;
+                        }
+                        else
+                        {
+                            Response.Write("<script>alert('Unauthorized user');</script>");
+                            break;
+                        }
+                    }
+                    con.Close();
+                }
+                if (flag == 1)
+                {
+                    using (SqlConnection con = new SqlConnection(strcon))
+                    {
+
+                        if (con.State == ConnectionState.Closed)
+                        {
+                            con.Open();
+                        }
+
+                        SqlCommand cmd = new SqlCommand("SELECT [Flight_No],[Booking_By],[To],[From],[Class],[Departure],[Duration] from bookingdetails where Booking_No='" + TextBox1.Text.Trim() + "';", con);
+                        cmd.CommandType = CommandType.Text;
+
+                        using (SqlDataReader dr = cmd.ExecuteReader())
+                        {
+                            GridView1.DataSource = dr;
+                            GridView1.DataBind();
+                            dr.Dispose();
+                            dr.Close();
+                        }
+
+                        con.Close();
                     }
 
-                    con.Close();
                 }
             }
             catch (Exception ex)

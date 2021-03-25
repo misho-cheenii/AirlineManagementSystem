@@ -106,7 +106,7 @@ namespace AirlineManagementSystem
                     con.Open();
                 }
 
-                SqlCommand cmd = new SqlCommand("DELETE frommanager WHERE id='" + TextBox9.Text.Trim() + "'", con);
+                SqlCommand cmd = new SqlCommand("DELETE from manager WHERE id='" + TextBox9.Text.Trim() + "'", con);
 
                 cmd.ExecuteNonQuery();
                 con.Close();
@@ -192,7 +192,7 @@ namespace AirlineManagementSystem
                     con.Open();
                 }
 
-                SqlCommand cmd = new SqlCommand("SELECT * from manager where username='" + TextBox7.Text.Trim() + "';", con);
+                SqlCommand cmd = new SqlCommand("SELECT * from manager where id='" + TextBox9.Text.Trim() + "';", con);
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
