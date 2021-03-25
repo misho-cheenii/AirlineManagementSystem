@@ -89,7 +89,7 @@ namespace AirlineManagementSystem
 
                          cmd.ExecuteNonQuery();
                          con.Close();
-
+                        
                      }
                      ticketGenerate();
                  }
@@ -169,6 +169,7 @@ namespace AirlineManagementSystem
                     con.Open();
                 }
                 SqlCommand cmd = new SqlCommand("SELECT TOP(1) * from bookingdetails where Flight_No='" + TextBox3.Text.Trim() + "' order by Booking_No desc", con);
+                clearForm();
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
@@ -360,6 +361,13 @@ namespace AirlineManagementSystem
             cell.PaddingTop = 0f;
             return cell;
         }
-
+        void clearForm()
+        {
+            TextBox3.Text = "";
+            DropDownList1.DataSource = null;
+            DropDownList1.DataBind();
+            GridView2.DataSource = null;
+            GridView2.DataBind();
+        }
     }
 }

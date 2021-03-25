@@ -16,7 +16,7 @@ namespace AirlineManagementSystem
         string strcon = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (!Page.IsPostBack)
             {
                 using (SqlConnection con = new SqlConnection(strcon))
                 {
@@ -31,7 +31,9 @@ namespace AirlineManagementSystem
                     DropDownList2.DataBind();
                 }
             }
+            
         }
+
 
         //add location
         protected void Button4_Click(object sender, EventArgs e)
@@ -214,7 +216,7 @@ namespace AirlineManagementSystem
 
                 cmd.ExecuteNonQuery();
                 con.Close();
-                Response.Write("<script>alert('Class added Successfully');</script>");
+                Response.Write("<script>alert('City added Successfully');</script>");
                 clearForm();
             }
             catch (Exception ex)

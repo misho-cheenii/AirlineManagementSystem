@@ -144,6 +144,7 @@ namespace AirlineManagementSystem
 
                         cmd.ExecuteNonQuery();
                         con.Close();
+                        clearForm();
                         Response.Write("<script>alert('Booking Delete Successful');</script>");
                     }
                 }
@@ -158,6 +159,13 @@ namespace AirlineManagementSystem
         protected void Button4_Click(object sender, EventArgs e)
         {
             deleteBooking();
+        }
+
+        void clearForm()
+        {
+            TextBox1.Text = "";
+            GridView1.DataSource = null;
+            GridView1.DataBind();
         }
     }
 }

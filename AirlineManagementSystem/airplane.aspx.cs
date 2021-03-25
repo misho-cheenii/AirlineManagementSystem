@@ -69,12 +69,31 @@ namespace AirlineManagementSystem
                     con.Open();
                 }
 
-                SqlCommand cmd = new SqlCommand("UPDATE classprice SET price=@price, capacity=@capacity WHERE a_id='" + TextBox1.Text.Trim() + "' AND class = '" + DropDownList1.Text.Trim() + "'", con);
+                if (TextBox7.Text.Trim() != "" && TextBox6.Text.Trim() != "")
+                {
+                    SqlCommand cmd = new SqlCommand("UPDATE classprice SET price=@price, capacity=@capacity WHERE a_id='" + TextBox1.Text.Trim() + "' AND class = '" + DropDownList1.Text.Trim() + "'", con);
+                    cmd.Parameters.AddWithValue("@price", TextBox7.Text.Trim());
+                    cmd.Parameters.AddWithValue("@capacity", TextBox6.Text.Trim());
+                    cmd.ExecuteNonQuery();
+                }
+                else if (TextBox7.Text.Trim() == "" && TextBox6.Text.Trim() != "")
+                {
+                    SqlCommand cmd = new SqlCommand("UPDATE classprice SET capacity=@capacity WHERE a_id='" + TextBox1.Text.Trim() + "' AND class = '" + DropDownList1.Text.Trim() + "'", con);
+                    cmd.Parameters.AddWithValue("@capacity", TextBox6.Text.Trim());
+                    cmd.ExecuteNonQuery();
+                }
+                else if (TextBox7.Text.Trim() != "" && TextBox6.Text.Trim() == "")
+                {
+                    SqlCommand cmd = new SqlCommand("UPDATE classprice SET price=@price WHERE a_id='" + TextBox1.Text.Trim() + "' AND class = '" + DropDownList1.Text.Trim() + "'", con);
+                    cmd.Parameters.AddWithValue("@price", TextBox7.Text.Trim());
+                    cmd.ExecuteNonQuery();
+                }
+                else
+                {
+                    Response.Write("<script>alert('Kindly enter update parameters in Price and Capacity');</script>");
+                }
 
-                cmd.Parameters.AddWithValue("@price", TextBox7.Text.Trim());
-                cmd.Parameters.AddWithValue("@capacity", TextBox6.Text.Trim());
-
-                cmd.ExecuteNonQuery();
+                
                 con.Close();
                 Response.Write("<script>alert('Update Successful');</script>");
                 GridView1.DataBind();
